@@ -2,43 +2,27 @@ const flashMessage = (options) => (() => {
   const flashContainer = document.querySelector('.flash-container');
 
   const position = {
-    topLeft: {
+    'top-left': {
       value: 'top: 1em; left: 1em',
     },
-    topRight: {
+    'top-right': {
       value: 'top: 1em; right: 1em',
     },
-    topCenter: {
+    'top-center': {
       value: 'top: 1em; left: 50%; transform: translate(-50%)',
     },
-    bottomLeft: {
+    'bottom-left': {
       value: 'bottom: 1em; left: 1em',
     },
-    bottomRight: {
+    'bottom-right': {
       value: 'bottom: 1em; right: 1em',
     },
-    bottomCenter: {
+    'bottom-center': {
       value: 'bottom: 1em; left: 50%; transform: translate(-50%)',
     },
   };
 
-  if (!options.position) {
-    flashContainer.style.cssText = position.topRight.value;
-  } else if (options.position === 'top-left') {
-    flashContainer.style.cssText = position.topLeft.value;
-  } else if (options.position === 'top-right') {
-    flashContainer.style.cssText = position.topRight.value;
-  } else if (options.position === 'top-center') {
-    flashContainer.style.cssText = position.topCenter.value;
-  } else if (options.position === 'bottom-left') {
-    flashContainer.style.cssText = position.bottomLeft.value;
-  } else if (options.position === 'bottom-right') {
-    flashContainer.style.cssText = position.bottomRight.value;
-  } else if (options.position === 'bottom-center') {
-    flashContainer.style.cssText = position.bottomCenter.value;
-  } else {
-    flashContainer.style.cssText = position.topRight.value;
-  }
+  flashContainer.style.cssText = position[options.position].value || position['top-right'].value;
 
   const flahsMessageObj = {
     message(content) {
