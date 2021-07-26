@@ -50,6 +50,7 @@ body {
 .flash {
     border-radius: 5px;
     color: #fffff9;
+    cursor: pointer;
     font-size: 1.6em;
     width: 300px;
     padding: 20px;
@@ -75,4 +76,8 @@ body {
 
 .flash.message {
     background: #f8efed;
+}
+
+.flash-hidden {
+    visibility: hidden;
 }

@@ -29,6 +29,13 @@ const flashMessage = (userOptions) => (() => {
   // set position of container flash
   flashContainer.style.cssText = options.position[userOptions.position].value || options.position['top-right'].value;
 
+  const removeFlashsFromDom = () => {
+    setTimeout(() => {
+      const flashs = document.getElementsByClassName('flash-hidden');
+      Array.from(flashs).forEach((flash) => flash.remove());
+    }, 1000);
+  };
+
   const timer = {
     start: 0,
     remaning: options.duration,
@@ -44,7 +51,8 @@ const flashMessage = (userOptions) => (() => {
       this.start = new Date();
 
       this.timer = window.setTimeout(() => {
-        this.flash.remove();
+        this.flash.classList.add('flash-hidden');
+        removeFlashsFromDom();
       }, this.remaning);
     },
   };
