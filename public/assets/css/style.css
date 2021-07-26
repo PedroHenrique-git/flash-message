@@ -47,16 +47,32 @@ body {
     flex-direction: column;
 }
 
-.flash_container-message {
-    background: rgb(226, 214, 214);
+.flash {
     border-radius: 5px;
-    color: #000;
+    color: #fffff9;
     font-size: 1.6em;
     width: 300px;
     padding: 20px;
     margin-bottom: 20px;
+    text-shadow: 1px 0px 5px rgba(0,0,0,0.58);
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.flash.warn {
+    background: #ffef52;
+}
+
+.flash.error {
+    background: #940009;
+}
+
+.flash.info {
+    background: #06a3d2;
+}
+
+.flash.message {
+    background: #f8efed;
 }
