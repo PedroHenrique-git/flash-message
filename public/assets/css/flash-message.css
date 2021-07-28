@@ -1,0 +1,79 @@
+.flash-container {
+    position: fixed;
+    transition: all 3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flash {
+    border-radius: 5px;
+    color: #fffff9;
+    cursor: pointer;
+    font-size: 1.6em;
+    width: 300px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    text-shadow: 1px 0px 5px rgba(0,0,0,0.58);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flash.warn {
+    background: #ffef52;
+}
+
+.flash.error {
+    background: #940009;
+}
+
+.flash.info {
+    background: #06a3d2;
+}
+
+.flash.message {
+    background: #f8efed;
+}
+
+.flash-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.top-left {
+    top: 1em;
+    left: 1em;
+}
+
+.top-right {
+    top: 1em;
+    right: 1em;
+}
+
+.top-center {
+    top: 1em;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.bottom-left {
+    bottom: 1em;
+    left: 1em;
+}
+
+.bottom-right {
+    bottom: 1em;
+    right: 1em;
+}
+
+.bottom-center {
+    bottom: 1em;
+    left: 50%;
+    transform: translate(-50%);
+}
