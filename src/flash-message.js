@@ -8,7 +8,14 @@
 (function (root, factory) {
   root.FlashMessage = factory();
 }(this, () => {
-  const positions = ['top-left', 'top-right', 'top-center', 'bottom-left', 'bottom-right', 'bottom-center'];
+  const positions = [
+    'top-left',
+    'top-right',
+    'top-center',
+    'bottom-left',
+    'bottom-right',
+    'bottom-center',
+  ];
   const FlashMessage = function (options) {
     this.container = document.createElement('section');
     this.options = options || {};
@@ -16,14 +23,14 @@
     if (positions.includes(this.options.position)) {
       this.container.classList.add(this.options.position);
     } else {
-      this.container.classList.add(positions[0]);
+      this.container.classList.add(positions[1]);
     }
 
     this.container.classList.add('flash-container');
     document.body.appendChild(this.container);
   };
 
-  function Timer(callback, delay) {
+  const Timer = function (callback, delay) {
     this.start = 0;
     this.timer = 0;
     this.remaining = delay;
@@ -39,7 +46,7 @@
     };
 
     this.resume();
-  }
+  };
 
   const validate = (content, type) => {
     if (typeof content !== type) throw window.TypeError(`pass a ${type} to the method`);
@@ -67,6 +74,23 @@
       });
     },
 
+    closeButton(parent, value) {
+      const btn = document.createElement('button');
+      const textNode = document.createTextNode(value);
+      btn.className = 'close-btn';
+      btn.appendChild(textNode);
+
+      btn.addEventListener('click', () => {
+        parent.classList.add('flash-hidden');
+      });
+
+      btn.addEventListener('transitionend', () => {
+        parent.classList.add('smooth');
+      });
+
+      parent.appendChild(btn);
+    },
+
     removeFlahsFromDom() {
       const flashs = document.getElementsByClassName('flash-hidden');
       new Timer(() => {
@@ -86,6 +110,7 @@
       const warn = this.createFlash('warn');
       warn.innerText = content;
       this.container.appendChild(warn);
+      this.closeButton(warn, 'X');
     },
 
     error(content) {
@@ -93,6 +118,7 @@
       const error = this.createFlash('error');
       error.innerText = content;
       this.container.appendChild(error);
+      this.closeButton(error, 'X');
     },
 
     info(content) {
@@ -100,13 +126,15 @@
       const info = this.createFlash('info');
       info.innerText = content;
       this.container.appendChild(info);
+      this.closeButton(info, 'X');
     },
 
-    message(content) {
+    success(content) {
       validate(content, 'string');
-      const message = this.createFlash('message');
-      message.innerText = content;
-      this.container.appendChild(message);
+      const success = this.createFlash('success');
+      success.innerText = content;
+      this.container.appendChild(success);
+      this.closeButton(success, 'X');
     },
 
   };
