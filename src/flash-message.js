@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 /*!
  * FlashMessage
  * @license MIT licensed
@@ -12,10 +13,10 @@
 }(this, () => {
   const positions = ['top-left', 'top-right', 'top-center', 'bottom-left', 'bottom-right', 'bottom-center'];
   const FlashMessage = function (options) {
-    this.options = options || {};
     this.container = document.createElement('section');
+
+    this.options = options || {};
     this.duration = this.options.duration || 3000;
-    this.container.classList.add('flash-container');
 
     if (positions.includes(this.options.position)) {
       this.container.classList.add(this.options.position);
@@ -23,6 +24,7 @@
       this.container.classList.add(positions[0]);
     }
 
+    this.container.classList.add('flash-container');
     document.body.appendChild(this.container);
   };
 
@@ -61,8 +63,16 @@
       });
 
       flash.addEventListener('transitionend', () => {
-        flash.remove();
+        flash.classList.add('smooth');
+        this.removeFlahsFromDom();
       });
+    },
+
+    removeFlahsFromDom() {
+      const flashs = document.getElementsByClassName('flash-hidden');
+      new Timer(() => {
+        Array.from(flashs).forEach((flash) => flash.remove());
+      }, 1000);
     },
 
     createFlash(type) {
