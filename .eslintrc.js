@@ -10,5 +10,10 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'no-undef': 'off',
+    'no-new': 'off',
+    'no-param-reassign': 'off',
+    'func-names': 'off',
+    'valid-typeof': 'off',
   },
 };

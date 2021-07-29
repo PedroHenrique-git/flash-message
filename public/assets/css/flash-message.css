@@ -84,3 +84,15 @@
     left: 50%;
     transform: translate(-50%);
 }
+
+@media (max-with: 640px) {
+    .flash {
+        width: 100vw;
+    }
+
+    .top-left,
+    .top-right,
+    .top-center {
+        top: 0em;
+    }
+}

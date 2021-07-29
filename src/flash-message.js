@@ -1,4 +1,3 @@
-/* eslint-disable no-new */
 /*!
  * FlashMessage
  * @license MIT licensed
@@ -6,17 +5,13 @@
  * Copyright (C) 2021 Pedro Henrique
  */
 
-/* eslint-disable no-param-reassign */
-/* eslint-disable func-names */
 (function (root, factory) {
   root.FlashMessage = factory();
 }(this, () => {
   const positions = ['top-left', 'top-right', 'top-center', 'bottom-left', 'bottom-right', 'bottom-center'];
   const FlashMessage = function (options) {
     this.container = document.createElement('section');
-
     this.options = options || {};
-    this.duration = this.options.duration || 3000;
 
     if (positions.includes(this.options.position)) {
       this.container.classList.add(this.options.position);
@@ -46,13 +41,17 @@
     this.resume();
   }
 
+  const validate = (content, type) => {
+    if (typeof content !== type) throw window.TypeError(`pass a ${type} to the method`);
+  };
+
   FlashMessage.prototype = {
     constructor: FlashMessage,
 
     controlFadeAndHover(flash) {
       const timer = new Timer(() => {
         flash.classList.add('flash-hidden');
-      }, this.duration);
+      }, this.options.duration || 3000);
 
       flash.addEventListener('mouseover', () => {
         timer.pause();
@@ -83,24 +82,28 @@
     },
 
     warn(content) {
+      validate(content, 'string');
       const warn = this.createFlash('warn');
       warn.innerText = content;
       this.container.appendChild(warn);
     },
 
     error(content) {
+      validate(content, 'string');
       const error = this.createFlash('error');
       error.innerText = content;
       this.container.appendChild(error);
     },
 
     info(content) {
+      validate(content, 'string');
       const info = this.createFlash('info');
       info.innerText = content;
       this.container.appendChild(info);
     },
 
     message(content) {
+      validate(content, 'string');
       const message = this.createFlash('message');
       message.innerText = content;
       this.container.appendChild(message);
