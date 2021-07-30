@@ -31,7 +31,19 @@ js:
 
 then call one of the predefined methods for messages
 
-`flash.success('this is a flash message')`<br />
-`flash.error('this is a flash message')`<br />
-`flash.warn('this is a flash message')`<br />
-`flash.info('this is a flash message')`<br />
+~~~javascript
+flash.success('this is a flash message')
+flash.error('this is a flash message')
+flash.warn('this is a flash message')
+flash.info('this is a flash message')
+~~~
+<br />
+
+you can define the position and duration of the message by passing an object to the FlashMessage constructor
+
+~~~javascript
+const flash = new FlashMessage({
+  position: 'top-left', // top-left, top-right, top-center, bottom-left, bottom-right, bottom-center
+  duration: 3000, // in milliseconds
+});
+~~~
