@@ -17,17 +17,23 @@ add files to html page
 
 css:
 
-`<link rel="stylesheet" href="./example/lib/flash-message-min.css">`
+~~~html
+ <link rel="stylesheet" href="./example/lib/flash-message-min.css">
+~~~
 
 js: 
 
-`<script defer src="./example/lib/flash-message-min.js"></script>`
+~~~html
+<script defer src="./example/lib/flash-message-min.js"></script>
+~~~
 
 ### Usage
 
 #### create a new instance of the object
 
-`const flash = new FlashMessage()`
+~~~javascript
+const flash = new FlashMessage()
+~~~
 
 then call one of the predefined methods for messages
 
@@ -46,4 +52,18 @@ const flash = new FlashMessage({
   position: 'top-left', // top-left, top-right, top-center, bottom-left, bottom-right, bottom-center
   duration: 3000, // in milliseconds
 });
+~~~
+
+for additional styles use classes
+
+for flash messages:
+
+~~~css
+ .flash, .flash.warn, .flash.error, .flash.info, .flash.success     
+~~~
+
+to the container:
+
+~~~css
+ .flash-container     
 ~~~
