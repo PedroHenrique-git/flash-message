@@ -16,6 +16,7 @@
     'bottom-right',
     'bottom-center',
   ];
+
   const FlashMessage = function (options) {
     this.container = document.createElement('section');
     this.options = options || {};
