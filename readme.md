@@ -7,20 +7,9 @@ a simples lib to show messages
 
 ## Getting Started
 
-### create a new instance of the object
+### installation
 
-`const flash = new FlashMessage()`
-
-then call one of the predefined methods for messages
-
-`flash.success('this is a flash message')`
-`flash.error('this is a flash message')`
-`flash.warn('this is a flash message')`
-`flash.info('this is a flash message')`
-
-## installation
-
-## Download files
+#### Download files
 
 <a href="/download/flash-message.zip" download>click to download</a>
 
@@ -33,3 +22,16 @@ css:
 js: 
 
 `<script defer src="./example/lib/flash-message-min.js"></script>`
+
+### Usage
+
+#### create a new instance of the object
+
+`const flash = new FlashMessage()`
+
+then call one of the predefined methods for messages
+
+`flash.success('this is a flash message')`<br />
+`flash.error('this is a flash message')`<br />
+`flash.warn('this is a flash message')`<br />
+`flash.info('this is a flash message')`<br />
